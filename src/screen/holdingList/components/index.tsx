@@ -1,7 +1,7 @@
 import React from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
-import {IHoldingListProps} from '../holdingList.types';
 import useStyles from './holdingListFlow.styles';
+import {IHoldingListProps} from '../holdingList.types';
 
 const HoldingListFlow: React.FC<IHoldingListProps> = ({item, index}) => {
   const {ltp, symbol, quantity, close} = item || {};
@@ -14,12 +14,13 @@ const HoldingListFlow: React.FC<IHoldingListProps> = ({item, index}) => {
     symbolText,
     valueText,
     simpleText,
+    flex,
   } = useStyles();
 
   const pnl = (close - ltp) * quantity;
 
   return (
-    <TouchableOpacity key={index?.toString()} style={holdingListContainer}>
+    <TouchableOpacity key={index.toString()} style={holdingListContainer}>
       <View style={nameLtpContainer}>
         <Text style={symbolText}>{symbol || ''}</Text>
 
@@ -32,7 +33,7 @@ const HoldingListFlow: React.FC<IHoldingListProps> = ({item, index}) => {
       <View style={pnlQuantityContainer}>
         <Text style={simpleText}>{quantity}</Text>
 
-        <View style={{flex: 1}} />
+        <View style={flex} />
         <Text style={simpleText}>P/L: </Text>
         <Text style={valueText}>{`₹ ${pnl?.toFixed(2) || 0}`}</Text>
       </View>

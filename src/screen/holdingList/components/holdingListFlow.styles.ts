@@ -133,6 +133,7 @@ const useStyles = () => {
       right: 0,
       position: 'absolute',
     },
+    flex: {flex: 1},
   });
 };
 

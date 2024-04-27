@@ -1,11 +1,11 @@
 import React, {useEffect, useRef, useState} from 'react';
-import HoldingListFlow from './components';
 import {FlatList, View, ActivityIndicator} from 'react-native';
-import {homeHoldingApi} from '@api';
+import HoldingListFlow from './components';
 import HoldingProfitLoss from './components/holdingProfitLoss';
 import useStyles from './components/holdingListFlow.styles';
 import HoldingHeader from './components/holdingHeader';
 import {IHoldingData} from './holdingList.types';
+import {homeHoldingApi} from '@api';
 
 const HoldingList: React.FC = () => {
   const {
@@ -22,14 +22,14 @@ const HoldingList: React.FC = () => {
     minimumViewTime: 1000,
   });
 
-  const [data, setData] = useState<IHoldingData>({
+  const [holdingList, setHoldingList] = useState<IHoldingData>({
     userHolding: [],
   });
   const [loading, setLoading] = useState<boolean>(true);
 
   const fetchData = async () => {
     const {data} = await homeHoldingApi.getSearchFnoInstruments();
-    setData(data);
+    setHoldingList(data);
     setLoading(false);
   };
 
@@ -39,19 +39,20 @@ const HoldingList: React.FC = () => {
 
   return (
     <View style={mainContainer}>
-      <View style={subContainer}>
-        {loading ? (
-          <ActivityIndicator
-            size="small"
-            color="black"
-            style={loadingContainer}
-          />
-        ) : (
+      {loading ? (
+        <ActivityIndicator
+          size="small"
+          color="black"
+          style={loadingContainer}
+        />
+      ) : (
+        <View style={subContainer}>
+          <HoldingHeader />
           <FlatList
             removeClippedSubviews={true}
             keyboardShouldPersistTaps="always"
             showsHorizontalScrollIndicator={false}
-            data={data.userHolding}
+            data={holdingList.userHolding}
             decelerationRate="fast"
             viewabilityConfig={Config.current}
             updateCellsBatchingPeriod={8}
@@ -59,16 +60,18 @@ const HoldingList: React.FC = () => {
             renderItem={({item, index}) => {
               return <HoldingListFlow index={index} item={item} />;
             }}
-            ListHeaderComponent={<HoldingHeader />}
+            // ListHeaderComponent={<HoldingHeader />}
             ItemSeparatorComponent={() => (
               <View style={itemSeparatorComponent}>
                 <View style={itemSeparatorComponentSub} />
               </View>
             )}
           />
-        )}
-      </View>
-      {loading ? null : <HoldingProfitLoss holdingData={data.userHolding} />}
+        </View>
+      )}
+      {loading ? null : (
+        <HoldingProfitLoss holdingData={holdingList.userHolding} />
+      )}
     </View>
   );
 };
