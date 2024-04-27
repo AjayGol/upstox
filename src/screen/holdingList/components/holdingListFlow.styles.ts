@@ -53,7 +53,7 @@ const useStyles = () => {
       overflow: 'hidden',
     },
     bottomTextContainer: {
-      bottom: 20,
+      bottom: 5,
       left: 16,
       right: 16,
       position: 'absolute',
@@ -69,7 +69,7 @@ const useStyles = () => {
     bottomText: {
       fontSize: 15,
       fontWeight: 'bold',
-      marginVertical: 5,
+      marginVertical: 8,
       color: constant.blackColor,
     },
     bottomTextValue: {
@@ -104,6 +104,34 @@ const useStyles = () => {
       flex: 1,
       justifyContent: 'center',
       alignItems: 'center',
+    },
+    triangleAtTop: {
+      borderLeftWidth: 10,
+      borderRightWidth: 10,
+      borderBottomWidth: 20,
+      borderBottomColor: constant.triangleColor,
+    },
+    triangleAtDown: {
+      borderLeftWidth: 10,
+      borderRightWidth: 10,
+      borderTopWidth: 20,
+      borderTopColor: constant.triangleColor,
+    },
+    triangle: {
+      width: 0,
+      height: 0,
+      backgroundColor: 'transparent',
+      borderStyle: 'solid',
+      borderLeftColor: 'transparent',
+      borderRightColor: 'transparent',
+    },
+    triangleMain: {
+      alignItems: 'center',
+      justifyContent: 'center',
+      top: 5,
+      left: 0,
+      right: 0,
+      position: 'absolute',
     },
   });
 };

@@ -20,6 +20,10 @@ const HoldingProfitLoss: React.FC<IHoldingDataProps> = ({holdingData}) => {
     bottomText,
     bottomListContainer,
     bottomTextValue,
+    triangleAtTop,
+    triangle,
+    triangleAtDown,
+    triangleMain,
   } = useStyles();
 
   const [visible, setVisible] = useState<boolean>(false);
@@ -79,7 +83,7 @@ const HoldingProfitLoss: React.FC<IHoldingDataProps> = ({holdingData}) => {
   };
 
   const bottomHeight = useAnimatedStyle(() => {
-    const marginTopStyle = interpolate(offset.value, [0, 1], [50, 150]);
+    const marginTopStyle = interpolate(offset.value, [0, 1], [50, 170]);
 
     return {
       height: marginTopStyle,
@@ -90,6 +94,9 @@ const HoldingProfitLoss: React.FC<IHoldingDataProps> = ({holdingData}) => {
     <Animated.View
       onPress={onPressProfitLoss}
       style={[bottomHeight, bottomContainer]}>
+      <View style={triangleMain}>
+        <View style={[triangle, visible ? triangleAtDown : triangleAtTop]} />
+      </View>
       <View style={bottomTextContainer}>
         {data?.map((item, index) => {
           return (
