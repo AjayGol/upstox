@@ -62,6 +62,7 @@ const HoldingProfitLoss: React.FC<IHoldingDataProps> = ({holdingData}) => {
 
   useEffect(() => {
     calculateValue();
+    // eslint-disable-next-line
   }, [holdingData]);
 
   const onPressProfitLoss = () => {
