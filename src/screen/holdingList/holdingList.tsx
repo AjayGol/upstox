@@ -4,6 +4,7 @@ import {FlatList, View} from 'react-native';
 import {homeHoldingApi} from '@api';
 import HoldingProfitLoss from './components/holdingProfitLoss';
 import useStyles from './components/holdingListFlow.styles';
+import HoldingHeader from './components/holdingHeader';
 
 const HoldingList: React.FC = () => {
   const {
@@ -46,6 +47,7 @@ const HoldingList: React.FC = () => {
           renderItem={({item, index}) => {
             return <HoldingListFlow index={index} item={item} />;
           }}
+          ListHeaderComponent={<HoldingHeader />}
           ItemSeparatorComponent={() => (
             <View style={itemSeparatorComponent}>
               <View style={itemSeparatorComponentSub} />

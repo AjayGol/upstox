@@ -11,6 +11,7 @@ module.exports = {
         alias: {
           '@screen': './src/screen',
           '@api': './src/api',
+          '@utils': './src/utils',
         },
       },
     ],

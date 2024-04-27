@@ -1,9 +1,10 @@
 import {StyleSheet} from 'react-native';
+import {constant} from '@utils/constant';
 
 const useStyles = () => {
   return StyleSheet.create({
     mainContainer: {
-      backgroundColor: '#C7C7CC',
+      backgroundColor: constant.appBackGroundColor,
       flex: 1,
     },
     subContainer: {
@@ -12,7 +13,7 @@ const useStyles = () => {
     holdingListContainer: {
       paddingHorizontal: 16,
       paddingVertical: 12,
-      backgroundColor: '#FFF',
+      backgroundColor: constant.whiteColor,
     },
     nameLtpContainer: {
       flexDirection: 'row',
@@ -30,15 +31,15 @@ const useStyles = () => {
     symbolText: {
       fontSize: 15,
       fontWeight: 'bold',
-      color: 'black',
+      color: constant.blackColor,
     },
     valueText: {
       fontSize: 14,
       fontWeight: 'bold',
-      color: 'black',
+      color: constant.blackColor,
     },
     simpleText: {
-      color: 'black',
+      color: constant.blackColor,
     },
     bottomContainer: {
       zIndex: 1,
@@ -46,7 +47,7 @@ const useStyles = () => {
       left: 0,
       right: 0,
       position: 'absolute',
-      backgroundColor: 'white',
+      backgroundColor: constant.whiteColor,
       justifyContent: 'center',
       paddingHorizontal: 16,
       overflow: 'hidden',
@@ -69,10 +70,10 @@ const useStyles = () => {
       fontSize: 15,
       fontWeight: 'bold',
       marginVertical: 5,
-      color: 'black',
+      color: constant.blackColor,
     },
     bottomTextValue: {
-      color: 'black',
+      color: constant.blackColor,
       marginVertical: 5,
     },
     bottomListContainer: {
@@ -80,13 +81,24 @@ const useStyles = () => {
       justifyContent: 'space-between',
     },
     itemSeparatorComponent: {
-      backgroundColor: '#FFF',
+      backgroundColor: constant.whiteColor,
       height: 2,
     },
     itemSeparatorComponentSub: {
-      backgroundColor: '#D7D8D9',
+      backgroundColor: constant.separatorLineColor,
       height: 1,
       marginHorizontal: 12,
+    },
+    headerContainer: {
+      height: 50,
+      width: '100%',
+      backgroundColor: constant.headerColor,
+      justifyContent: 'center',
+    },
+    headerText: {
+      color: constant.whiteColor,
+      marginHorizontal: 16,
+      fontSize: 15,
     },
   });
 };
