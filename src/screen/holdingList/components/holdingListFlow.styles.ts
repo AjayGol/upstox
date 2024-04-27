@@ -53,7 +53,7 @@ const useStyles = () => {
       overflow: 'hidden',
     },
     bottomTextContainer: {
-      bottom: 5,
+      bottom: 7,
       left: 16,
       right: 16,
       position: 'absolute',
