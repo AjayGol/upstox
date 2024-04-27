@@ -5,6 +5,7 @@ import {homeHoldingApi} from '@api';
 import HoldingProfitLoss from './components/holdingProfitLoss';
 import useStyles from './components/holdingListFlow.styles';
 import HoldingHeader from './components/holdingHeader';
+import {IHoldingData} from './holdingList.types';
 
 const HoldingList: React.FC = () => {
   const {
@@ -20,7 +21,7 @@ const HoldingList: React.FC = () => {
     minimumViewTime: 1000,
   });
 
-  const [data, setData] = useState(null);
+  const [data, setData] = useState<IHoldingData>();
 
   const fetchData = async () => {
     const {data} = await homeHoldingApi.getSearchFnoInstruments();

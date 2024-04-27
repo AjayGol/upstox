@@ -17,4 +17,16 @@ interface IHoldingDataProps {
   holdingData: any;
 }
 
-export type {IHoldingListProps, IHoldingDataProps};
+interface IHolding {
+  symbol: string;
+  quantity: number;
+  ltp: number;
+  avgPrice: number;
+  close: number;
+}
+
+interface IHoldingData {
+  userHolding: IHolding[];
+}
+
+export type {IHoldingListProps, IHoldingDataProps, IHoldingData};
