@@ -12,15 +12,15 @@ import Animated, {
 } from 'react-native-reanimated';
 
 const HoldingProfitLoss: React.FC<IHoldingDataProps> = ({holdingData}) => {
+  const offset = useSharedValue(0);
   const {
     bottomContainer,
     bottomTextContainer,
     swipeContainer,
     bottomText,
     bottomListContainer,
+    bottomTextValue,
   } = useStyles();
-
-  const offset = useSharedValue(0);
 
   const [visible, setVisible] = useState<boolean>(false);
   const [data, setData] = useState<any>([]);
@@ -31,9 +31,9 @@ const HoldingProfitLoss: React.FC<IHoldingDataProps> = ({holdingData}) => {
     let totalTodayPnl = 0;
 
     holdingData?.forEach(item => {
-      const currentValue = item.ltp * item.quantity;
-      const investmentValue = item.avgPrice * item.quantity;
-      const todayPnl = (item.close - item.ltp) * item.quantity;
+      const currentValue = item?.ltp * item?.quantity;
+      const investmentValue = item?.avgPrice * item?.quantity;
+      const todayPnl = (item?.close - item?.ltp) * item?.quantity;
       totalCurrentValue += currentValue;
       totalInvestmentValue += investmentValue;
       totalTodayPnl += todayPnl;
@@ -41,19 +41,19 @@ const HoldingProfitLoss: React.FC<IHoldingDataProps> = ({holdingData}) => {
 
     const allValue = [
       {
-        title: 'Current Value',
+        title: 'Current Value:',
         value: totalCurrentValue,
       },
       {
-        title: 'Total Investment',
+        title: 'Total Investment:',
         value: totalInvestmentValue,
       },
       {
-        title: "Today's Profit & Loss",
+        title: "Today's Profit & Loss:",
         value: totalTodayPnl,
       },
       {
-        title: 'Profit & Loss',
+        title: 'Profit & Loss:',
         value: totalCurrentValue - totalInvestmentValue,
       },
     ];
@@ -62,7 +62,7 @@ const HoldingProfitLoss: React.FC<IHoldingDataProps> = ({holdingData}) => {
 
   useEffect(() => {
     calculateValue();
-  }, []);
+  }, [holdingData]);
 
   const onPressProfitLoss = () => {
     setVisible(!visible);
@@ -92,11 +92,7 @@ const HoldingProfitLoss: React.FC<IHoldingDataProps> = ({holdingData}) => {
           return (
             <View style={bottomListContainer} key={index}>
               <Text style={bottomText}>{item?.title}</Text>
-              <Text
-                style={{
-                  color: 'black',
-                  marginVertical: 5,
-                }}>
+              <Text style={bottomTextValue}>
                 {`₹${item?.value.toFixed(2) || 0}`}
               </Text>
             </View>

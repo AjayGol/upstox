@@ -2,6 +2,13 @@ import {StyleSheet} from 'react-native';
 
 const useStyles = () => {
   return StyleSheet.create({
+    mainContainer: {
+      backgroundColor: '#C7C7CC',
+      flex: 1,
+    },
+    subContainer: {
+      flex: 1,
+    },
     holdingListContainer: {
       paddingHorizontal: 16,
       paddingVertical: 12,
@@ -10,8 +17,7 @@ const useStyles = () => {
     nameLtpContainer: {
       flexDirection: 'row',
       alignItems: 'center',
-      marginTop: 8,
-      marginBottom: 8,
+      justifyContent: 'space-between',
     },
     ltpContainer: {
       flexDirection: 'row',
@@ -24,6 +30,14 @@ const useStyles = () => {
     symbolText: {
       fontSize: 15,
       fontWeight: 'bold',
+      color: 'black',
+    },
+    valueText: {
+      fontSize: 14,
+      fontWeight: 'bold',
+      color: 'black',
+    },
+    simpleText: {
       color: 'black',
     },
     bottomContainer: {
@@ -57,9 +71,22 @@ const useStyles = () => {
       marginVertical: 5,
       color: 'black',
     },
+    bottomTextValue: {
+      color: 'black',
+      marginVertical: 5,
+    },
     bottomListContainer: {
       flexDirection: 'row',
       justifyContent: 'space-between',
+    },
+    itemSeparatorComponent: {
+      backgroundColor: '#FFF',
+      height: 2,
+    },
+    itemSeparatorComponentSub: {
+      backgroundColor: '#D7D8D9',
+      height: 1,
+      marginHorizontal: 12,
     },
   });
 };

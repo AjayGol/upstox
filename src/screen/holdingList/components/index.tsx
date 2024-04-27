@@ -12,6 +12,8 @@ const HoldingListFlow: React.FC<IHoldingListProps> = ({item, index}) => {
     ltpContainer,
     pnlQuantityContainer,
     symbolText,
+    valueText,
+    simpleText,
   } = useStyles();
 
   const pnl = (close - ltp) * quantity;
@@ -21,19 +23,18 @@ const HoldingListFlow: React.FC<IHoldingListProps> = ({item, index}) => {
       <View style={nameLtpContainer}>
         <Text style={symbolText}>{symbol || ''}</Text>
 
-        <View style={{flex: 1}} />
         <View style={ltpContainer}>
-          <Text style={{color: 'black'}}>LTP: </Text>
-          <Text style={{color: 'black'}}>{`₹ ${ltp.toFixed(2) || 0}`}</Text>
+          <Text style={simpleText}>LTP: </Text>
+          <Text style={valueText}>{`₹ ${ltp.toFixed(2) || 0}`}</Text>
         </View>
       </View>
 
       <View style={pnlQuantityContainer}>
-        <Text style={{color: 'black'}}>{quantity}</Text>
+        <Text style={simpleText}>{quantity}</Text>
 
         <View style={{flex: 1}} />
-        <Text style={{color: 'black'}}>P/L: </Text>
-        <Text style={{color: 'black'}}>{`₹ ${pnl.toFixed(2) || 0}`}</Text>
+        <Text style={simpleText}>P/L: </Text>
+        <Text style={valueText}>{`₹ ${pnl?.toFixed(2) || 0}`}</Text>
       </View>
     </TouchableOpacity>
   );

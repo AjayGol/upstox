@@ -3,8 +3,16 @@ import HoldingListFlow from './components';
 import {FlatList, View} from 'react-native';
 import {homeHoldingApi} from '@api';
 import HoldingProfitLoss from './components/holdingProfitLoss';
+import useStyles from './components/holdingListFlow.styles';
 
 const HoldingList: React.FC = () => {
+  const {
+    itemSeparatorComponent,
+    itemSeparatorComponentSub,
+    mainContainer,
+    subContainer,
+  } = useStyles();
+
   const Config = useRef({
     itemVisiblePercentThreshold: 95,
     waitForInteraction: true,
@@ -19,12 +27,12 @@ const HoldingList: React.FC = () => {
   };
 
   useEffect(() => {
-    fetchData();
+    fetchData().then(r => console.log(r));
   }, []);
 
   return (
-    <View style={{backgroundColor: '#C7C7CC', flex: 1}}>
-      <View style={{flex: 1}}>
+    <View style={mainContainer}>
+      <View style={subContainer}>
         <FlatList
           removeClippedSubviews={true}
           keyboardShouldPersistTaps="always"
@@ -33,25 +41,14 @@ const HoldingList: React.FC = () => {
           extraData={{}}
           decelerationRate="fast"
           viewabilityConfig={Config.current}
-          updateCellsBatchingPeriod={10}
+          updateCellsBatchingPeriod={8}
           keyExtractor={item => item?.symbol || ''}
           renderItem={({item, index}) => {
             return <HoldingListFlow index={index} item={item} />;
           }}
           ItemSeparatorComponent={() => (
-            <View
-              style={{
-                backgroundColor: '#FFF',
-                height: 2,
-                marginHorizontal: 0,
-              }}>
-              <View
-                style={{
-                  backgroundColor: '#D7D8D9',
-                  height: 1,
-                  marginHorizontal: 12,
-                }}
-              />
+            <View style={itemSeparatorComponent}>
+              <View style={itemSeparatorComponentSub} />
             </View>
           )}
         />
@@ -60,8 +57,6 @@ const HoldingList: React.FC = () => {
       <HoldingProfitLoss holdingData={data?.userHolding} />
     </View>
   );
-
-  // return <HoldingListFlow />;
 };
 
 export default HoldingList;
