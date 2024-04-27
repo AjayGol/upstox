@@ -30,34 +30,36 @@ const HoldingProfitLoss: React.FC<IHoldingDataProps> = ({holdingData}) => {
     let totalInvestmentValue = 0;
     let totalTodayPnl = 0;
 
-    holdingData?.forEach(item => {
-      const currentValue = item?.ltp * item?.quantity;
-      const investmentValue = item?.avgPrice * item?.quantity;
-      const todayPnl = (item?.close - item?.ltp) * item?.quantity;
-      totalCurrentValue += currentValue;
-      totalInvestmentValue += investmentValue;
-      totalTodayPnl += todayPnl;
-    });
+    if (holdingData) {
+      holdingData.forEach(item => {
+        const currentValue = item?.ltp * item?.quantity;
+        const investmentValue = item?.avgPrice * item?.quantity;
+        const todayPnl = (item?.close - item?.ltp) * item?.quantity;
+        totalCurrentValue += currentValue;
+        totalInvestmentValue += investmentValue;
+        totalTodayPnl += todayPnl;
+      });
 
-    const allValue = [
-      {
-        title: 'Current Value:',
-        value: totalCurrentValue,
-      },
-      {
-        title: 'Total Investment:',
-        value: totalInvestmentValue,
-      },
-      {
-        title: "Today's Profit & Loss:",
-        value: totalTodayPnl,
-      },
-      {
-        title: 'Profit & Loss:',
-        value: totalCurrentValue - totalInvestmentValue,
-      },
-    ];
-    setData(allValue);
+      const allValue = [
+        {
+          title: 'Current Value:',
+          value: totalCurrentValue,
+        },
+        {
+          title: 'Total Investment:',
+          value: totalInvestmentValue,
+        },
+        {
+          title: "Today's Profit & Loss:",
+          value: totalTodayPnl,
+        },
+        {
+          title: 'Profit & Loss:',
+          value: totalCurrentValue - totalInvestmentValue,
+        },
+      ];
+      setData(allValue);
+    }
   };
 
   useEffect(() => {

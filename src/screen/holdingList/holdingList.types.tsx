@@ -13,10 +13,6 @@ interface IHoldingListProps {
   index: number;
 }
 
-interface IHoldingDataProps {
-  holdingData: any;
-}
-
 interface IHolding {
   symbol: string;
   quantity: number;
@@ -27,6 +23,10 @@ interface IHolding {
 
 interface IHoldingData {
   userHolding: IHolding[];
+}
+
+interface IHoldingDataProps {
+  holdingData: IHolding[];
 }
 
 export type {IHoldingListProps, IHoldingDataProps, IHoldingData};
