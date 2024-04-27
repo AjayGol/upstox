@@ -86,8 +86,8 @@ const useStyles = () => {
     },
     itemSeparatorComponentSub: {
       backgroundColor: constant.separatorLineColor,
-      height: 1,
-      marginHorizontal: 12,
+      height: 2,
+      marginHorizontal: 16,
     },
     headerContainer: {
       height: 50,
