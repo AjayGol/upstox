@@ -100,6 +100,11 @@ const useStyles = () => {
       marginHorizontal: 16,
       fontSize: 15,
     },
+    loadingContainer: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
   });
 };
 
