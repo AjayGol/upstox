@@ -13,4 +13,8 @@ interface IHoldingListProps {
   index: number;
 }
 
-export type {IHoldingListProps};
+interface IHoldingDataProps {
+  holdingData: any;
+}
+
+export type {IHoldingListProps, IHoldingDataProps};
